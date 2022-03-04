@@ -18,8 +18,13 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
-    @GetMapping
+    @GetMapping("/department")
     public List<Department> findAll() {
         return departmentService.findAll();
         }
+
+    @PostMapping("/department")
+    public Department save(@RequestBody Department department) {
+        return departmentService.save(department);
+    }
 }
