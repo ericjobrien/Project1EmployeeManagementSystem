@@ -15,4 +15,9 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
     List<Department> findAll();
 
     Department save(Department department);
+
+    Department findById(int id);
+
+    @Override
+    void deleteById(Integer integer);
 }

@@ -23,8 +23,18 @@ public class DepartmentController {
         return departmentService.findAll();
         }
 
+    @GetMapping("/department/{id}")
+    public Department findById(@PathVariable int id) {
+        return departmentService.findById(id);
+    }
+
     @PostMapping("/department")
     public Department save(@RequestBody Department department) {
         return departmentService.save(department);
+    }
+
+    @DeleteMapping("/department/delete/{id}")
+    public void delete(@PathVariable int id) {
+        departmentService.delete(id);
     }
 }

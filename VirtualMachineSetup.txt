@@ -1,0 +1,39 @@
+Instructions for setting up a VM on Azure:
+1) Go to Microsoft Azure and create a new VM
+    a) Use same resource group as past projects or create new one
+    b) Name the VM
+    c) Adjust the size - for this project, I chose 1vpce 1 gb memory
+    d) Create new shh key, if you do not already have one, otherwise use the already established shh key
+        i) Creating new instructions:
+            a) Generate new key
+            b) Download file into a memorable location as you will need the file path for connecting to the VM
+    e) Accept all remaining default settings
+    f) Hit create - the VM is created
+    g) Create inbound and outbound security rule, if desired, to connect via any port
+        i) Click on the networking tab on the left-hand side,
+        ii) Defaults to inbound port rule, you can see this in the center of the screen.
+        iii) Click add inbound port rule
+        iv) Adjust Destination port ranges field to *
+        v) Rename to whatever you want - I chose AnyPortIn for inbound and AnyPortOut for outbound
+        vi) Click Save
+        vii) Go to Outbound port rules and repeat steps 2 through 6
+2) Connecting to the VM through the command line
+    a) Use the following prompt: ssh -i<privatekeypath><fileName.pem> azureuser@location (http address of VM)
+        i)Example ssh -i C:\\AzureVMKey\\EricsVM_Key.pem azureuser@20.185.18.23
+        ii) You can find the location in the connect tab, located on the left-hand side of the VM's page
+    b)You should now be connected to the VM
+3) Install needed packages into the VM - the VM comes with a version of git but you need to install the following
+    a) Update apt in command line: sudo apt-get update
+    b) Install Java in command line: sudo apt install default-jdk
+    c) Export Java JDK in command line: export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+    d) Ensure JAVA_HOME is set in command line: echo $JAVA_HOME - should print the above JAVA_HOME path
+    e) Install Maven in command line: sudo apt install maven
+4) Clone repo off of git hub
+    a) Go to git hub and find the repo for the project you want to run in the VM
+    b) Take note of the URL for this repo
+    c) In the command line: git clone https:/githubURL
+        i)Example git clone https://https://github.com/ericjobrien/Project1EmployeeManagementSystem
+5) Run the program with Maven
+    a) You should now have the cloned repo in the VM, check by using the ls command
+    b) CD into the parent directory of the git hub repo - for my example, cd Project1EmployeeManagementSystem
+    c) You are now in the parent directory, run the program in the command line: mvn spring-boot:run
