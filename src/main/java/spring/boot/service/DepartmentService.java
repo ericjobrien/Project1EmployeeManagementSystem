@@ -31,8 +31,7 @@ public class DepartmentService {
     }
 
     public void delete(int id) {
-        List<Department> departments = departmentRepository.findAll();
-        Department department = departments.get(id - 1);
+        Department department = departmentRepository.findById(id);
         departmentRepository.delete(department);
     }
 }

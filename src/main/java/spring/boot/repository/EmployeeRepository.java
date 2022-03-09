@@ -2,12 +2,22 @@ package spring.boot.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import spring.boot.model.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     List<Employee> findAll();
 
+    Employee save(Employee employee);
+
+    Employee findById(int id);
+
+    void delete(Employee employee);
+
+    @Query("FROM employee WHERE manager_id = 1")
+    List<Employee> findAllByManagerId(int id);
 }

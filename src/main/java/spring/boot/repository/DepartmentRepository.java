@@ -2,7 +2,9 @@ package spring.boot.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import spring.boot.model.Department;
+import spring.boot.model.Employee;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -19,5 +21,8 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
     Department findById(int id);
 
     @Override
-    void deleteById(Integer integer);
+    void delete(Department department);
+
+//    @Query("FROM ")
+//    List<Employee> findAllDepartmentEmployees();
 }

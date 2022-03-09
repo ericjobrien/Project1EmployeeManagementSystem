@@ -24,4 +24,13 @@ public class ManagerService {
     public Manager save(Manager manager) {
         return managerRepository.save(manager);
     }
+
+    public Manager findById(int id) {
+        return managerRepository.findById(id);
+    }
+
+    public void delete(int id) {
+        Manager manager = managerRepository.findById(id);
+        managerRepository.delete(manager);
+    }
 }
