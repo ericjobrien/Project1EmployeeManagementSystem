@@ -35,4 +35,30 @@ public class ManagerController {
     public void delete(@PathVariable int id) {
         managerService.delete(id);
     }
+
+    @PutMapping("manager/update/{id}")
+    public Manager update(@PathVariable int id, @RequestBody Manager manager) {
+        Manager manager1 = managerService.findById(id);
+
+        if(manager.getFirstName() != null) {
+            manager1.setFirstName(manager.getFirstName());
+        } else {
+            manager1.setFirstName(manager1.getFirstName());
+        }
+
+        if(manager.getLastName() != null) {
+            manager1.setLastName(manager.getLastName());
+        } else {
+            manager1.setLastName(manager1.getLastName());
+        }
+
+        if(manager.getEmployees() != null) {
+            manager1.setEmployees(manager.getEmployees());
+        } else {
+            manager1.setEmployees(manager1.getEmployees());
+        }
+        managerService.save(manager1);
+
+        return managerService.update(manager1);
+    }
 }

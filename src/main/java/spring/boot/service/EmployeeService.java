@@ -36,8 +36,9 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    public List<Employee> findAllByManagerId(int id) {
-        return employeeRepository.findAllByManagerId(id);
 
+    public Employee update(Employee employee) {
+
+        return employeeRepository.update(employee);
     }
 }

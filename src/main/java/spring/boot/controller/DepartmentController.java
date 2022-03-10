@@ -3,6 +3,7 @@ package spring.boot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import spring.boot.model.Manager;
 import spring.boot.service.DepartmentService;
 import spring.boot.model.Department;
 
@@ -36,5 +37,40 @@ public class DepartmentController {
     @DeleteMapping("/department/delete/{id}")
     public void delete(@PathVariable int id) {
         departmentService.delete(id);
+    }
+
+    @PutMapping("/department/update/{id}")
+    public Department update(@PathVariable int id, @RequestBody Department department) {
+        Department department1 = departmentService.findById(id);
+
+        if(department.getName() != null) {
+            department1.setName(department.getName());
+        } else {
+            department1.setName(department1.getName());
+        }
+
+        List<Manager> managers = department.getManagers();
+        int nullCounter = 0;
+        if(managers != null) {
+            System.out.println("Working check for !null managers");
+            for (int i = 0; i < managers.size(); i++) {
+                if (managers.get(i).getEmployees() == null) {
+                    System.out.println("Increasing null counter");
+                    nullCounter++;
+                }
+            }
+            if (nullCounter > 0) {
+                department1.setManagers(department1.getManagers());
+            } else {
+                department1.setManagers(department.getManagers());
+            }
+        } else {
+            department1.setManagers(department1.getManagers());
+        }
+
+
+
+        departmentService.save(department1);
+        return departmentService.update(department1);
     }
 }

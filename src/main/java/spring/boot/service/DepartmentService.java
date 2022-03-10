@@ -34,4 +34,8 @@ public class DepartmentService {
         Department department = departmentRepository.findById(id);
         departmentRepository.delete(department);
     }
+
+    public Department update(Department department) {
+        return departmentRepository.update(department);
+    }
 }

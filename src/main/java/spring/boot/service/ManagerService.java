@@ -33,4 +33,8 @@ public class ManagerService {
         Manager manager = managerRepository.findById(id);
         managerRepository.delete(manager);
     }
+
+    public Manager update(Manager manager) {
+        return managerRepository.update(manager);
+    }
 }

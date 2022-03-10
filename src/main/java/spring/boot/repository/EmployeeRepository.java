@@ -3,6 +3,7 @@ package spring.boot.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import spring.boot.model.Employee;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     void delete(Employee employee);
 
-    @Query("FROM employee WHERE manager_id = 1")
-    List<Employee> findAllByManagerId(int id);
+    @Query("FROM Employee WHERE employee_id = :employee_id")
+    Employee update(@Param("employee_id") Employee employee);
+
 }

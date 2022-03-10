@@ -2,6 +2,7 @@ package spring.boot.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import spring.boot.model.Manager;
 import spring.boot.service.ManagerService;
 
@@ -17,4 +18,7 @@ public interface ManagerRepository extends JpaRepository<Manager, Integer> {
 
     @Override
     void delete(Manager manager);
+
+    @Query("FROM Manager WHERE manager_id = :manager_id")
+    Manager update(@Param("manager_id")Manager manager);
 }
