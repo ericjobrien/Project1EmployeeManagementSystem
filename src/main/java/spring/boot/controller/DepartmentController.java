@@ -68,9 +68,14 @@ public class DepartmentController {
             department1.setManagers(department1.getManagers());
         }
 
-
-
         departmentService.save(department1);
         return departmentService.update(department1);
     }
+
+    @PutMapping("/department/update/addManager/{id}")
+    public Department addManagerToDepartment(@PathVariable int id, @RequestBody Manager manager) {
+        return departmentService.addManagerToDepartment(id, manager);
+    }
+
+
 }

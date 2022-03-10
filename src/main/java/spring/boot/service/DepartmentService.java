@@ -2,8 +2,10 @@ package spring.boot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import spring.boot.model.Manager;
 import spring.boot.repository.DepartmentRepository;
 import spring.boot.model.Department;
+import spring.boot.repository.ManagerRepository;
 
 import java.util.List;
 
@@ -11,7 +13,7 @@ import java.util.List;
 public class DepartmentService {
 
     DepartmentRepository departmentRepository;
-
+    ManagerService managerService;
 
     public DepartmentService(DepartmentRepository departmentRepository) {
         this.departmentRepository = departmentRepository;
@@ -38,4 +40,18 @@ public class DepartmentService {
     public Department update(Department department) {
         return departmentRepository.update(department);
     }
+
+    public Department addManagerToDepartment(int id, Manager manager) {
+        Department department = departmentRepository.findById(id);
+
+        List<Manager> managers = department.getManagers();
+
+        managers.add(manager);
+
+        department.setManagers(managers);
+
+        return departmentRepository.save(department);
+    }
+
+
 }

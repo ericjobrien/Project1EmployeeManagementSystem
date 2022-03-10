@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import spring.boot.model.Department;
 import spring.boot.model.Employee;
+import spring.boot.model.Manager;
 
 import javax.transaction.Transactional;
 import java.util.List;

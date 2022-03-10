@@ -1,6 +1,7 @@
 package spring.boot.controller;
 
 import org.springframework.web.bind.annotation.*;
+import spring.boot.model.Department;
 import spring.boot.model.Employee;
 import spring.boot.model.Manager;
 import spring.boot.service.ManagerService;
@@ -60,5 +61,10 @@ public class ManagerController {
         managerService.save(manager1);
 
         return managerService.update(manager1);
+    }
+
+    @PutMapping("/manager/update/addManagerById/{id}/{department_id}")
+    public Manager addManaagerToDepartmentById(@PathVariable int id, @PathVariable int department_id) {
+        return managerService.addManagerToDepartmentById(id, department_id);
     }
 }

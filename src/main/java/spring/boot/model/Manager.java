@@ -24,6 +24,8 @@ public class Manager {
     @OneToMany(targetEntity = Employee.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "manager_id", referencedColumnName = "managerId")
     private List<Employee> employees;
+    @ManyToOne
+    Department department;
 
 
 }
