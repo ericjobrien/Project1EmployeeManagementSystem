@@ -32,7 +32,7 @@ Instructions for setting up a VM on Azure:
     a) Go to git hub and find the repo for the project you want to run in the VM
     b) Take note of the URL for this repo
     c) In the command line: git clone https:/githubURL
-        i)Example git clone https://https://github.com/ericjobrien/Project1EmployeeManagementSystem
+        i)Example: git clone //https://github.com/ericjobrien/Project1EmployeeManagementSystem
 5) Run the program with Maven
     a) You should now have the cloned repo in the VM, check by using the ls command
     b) CD into the parent directory of the git hub repo - for my example, cd Project1EmployeeManagementSystem
