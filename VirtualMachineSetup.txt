@@ -19,7 +19,7 @@ Instructions for setting up a VM on Azure:
         vii) Go to Outbound port rules and repeat steps 2 through 6
 2) Connecting to the VM through the command line
     a) Use the following prompt: ssh -i<privatekeypath><fileName.pem> azureuser@location (http address of VM)
-        i)Example ssh -i C:\\AzureVMKey\\EricsVM_Key.pem azureuser@20.185.18.23
+        i)Example: ssh -i C:\\AzureVMKey\\EricsVM_Key.pem azureuser@20.185.18.23
         ii) You can find the location in the connect tab, located on the left-hand side of the VM's page
     b)You should now be connected to the VM
 3) Install needed packages into the VM - the VM comes with a version of git but you need to install the following
